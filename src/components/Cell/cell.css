@@ -1,0 +1,19 @@
+:local .wrapper {
+    border: 1px solid black;
+    flex: 10%;
+}
+
+:local .noShip.bombed {
+    background: rgb(76, 76, 255);
+}
+
+:local .ship.bombed {
+    background: rgb(233, 126, 25);
+}
+
+:local .ship {
+    background: #888888;
+}
+:local .noShip {
+    background-color: blue;
+}
