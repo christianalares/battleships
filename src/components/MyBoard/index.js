@@ -1,11 +1,16 @@
+// React stuff
 import React, { Component } from 'react'
 
+// Redux stuff
 import { connect } from 'react-redux'
 
+// Actions
 import { buildBoard } from '../../actions/board'
 
+// Components
 import Cell from '../Cell'
 
+// Style
 import styles from './myboard.css'
 
 class MyBoard extends Component {
@@ -18,20 +23,27 @@ class MyBoard extends Component {
 	}
 
 	renderBoard() {
+		// Loop every row
 		return this.props.board.map( (row, y) => {
-			return row.map( (cell, x, board) => {
-				// key = 1 through 100?!?!?!
+			// Loop every cell in every row
+			return row.map( (cell, x) => {
+
+				// Place a cell with a ship or not on that spot in the array
+				// TODO: Fix a unique key value (1 through 100?)
 				return (cell.ship)
-					? <Cell isFiredAt={cell.isFiredAt} key={(y+1) * (x+1)} x={x} y={y} ship={cell} />
+					? <Cell isFiredAt={cell.isFiredAt} key={(y+1) * (x+1)} x={x} y={y} ship={cell.ship} />
 					: <Cell isFiredAt={cell.isFiredAt} key={(y+1) * (x+1)} x={x} y={y} ship={null} />
+
 			} )
 		} )
 	}
 
 	putShipsOnBoard() {
-		const boardLength = this.props.board.length
-		const tempBoard = this.props.board
+		// Clone the state
+		const tempBoard = [...this.props.board]
 
+		// For every ship, take it's length and render it horizontally
+		// or vertically depending ot the direction prop
 		this.props.ships.forEach( (ship) => {
 			for(let i = 0; i < ship.length; i++) {
 				if(ship.direction === 'h') {
@@ -42,6 +54,7 @@ class MyBoard extends Component {
 			}
 		} )
 
+		// Set the new build board to state
 		this.props.dispatch( buildBoard(tempBoard) )
 	}
 

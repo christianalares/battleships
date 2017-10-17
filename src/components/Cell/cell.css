@@ -10,6 +10,9 @@
 :local .ship.bombed {
     background: rgb(233, 126, 25);
 }
+:local .ship.bombed.sink {
+    background-color: red;
+}
 
 :local .ship {
     background: #888888;

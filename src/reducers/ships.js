@@ -9,13 +9,14 @@ export default handleActions({
 	}
 }, {
 	ships: [
-        {
+		{
 			name: 's2_1',
 			length: 2,
 			posX: 0,
 			posY: 0,
 			direction: 'h',
-			hitPoints: 0
+			hitPoints: 0,
+			isSink: false
 		},
 		{
 			name: 's2_2',
@@ -23,7 +24,8 @@ export default handleActions({
 			posX: 4,
 			posY: 4,
 			direction: 'v',
-			hitPoints: 0
+			hitPoints: 0,
+			isSink: false
 		},
 		{
 			name: 's2_3',
@@ -31,7 +33,8 @@ export default handleActions({
 			posX: 6,
 			posY: 6,
 			direction: 'h',
-			hitPoints: 0
+			hitPoints: 0,
+			isSink: false
 		},
 		{
 			name: 's2_4',
@@ -39,7 +42,17 @@ export default handleActions({
 			posX: 4,
 			posY: 8,
 			direction: 'v',
-			hitPoints: 0
+			hitPoints: 0,
+			isSink: false
+		},
+		{
+			name: 's4_1',
+			length: 4,
+			posX: 2,
+			posY: 3,
+			direction: 'v',
+			hitPoints: 0,
+			isSink: false
 		}
-    ]
+	]
 })
