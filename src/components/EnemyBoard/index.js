@@ -6,9 +6,9 @@ import { buildBoard } from '../../actions/board'
 
 import Cell from '../Cell'
 
-import styles from './board.css'
+import styles from './enemyboard.css'
 
-class Board extends Component {
+class EnemyBoard extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -61,4 +61,4 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(Board)
+export default connect(mapStateToProps)(EnemyBoard)
