@@ -10,26 +10,23 @@ class Cell extends Component {
 	constructor(props) {
 		super(props)
 
-		console.log( buildBoard )
+		this.guessCell = this.guessCell.bind(this)
 	}
 
-	guessCell(x, y, ship) {
-		const tempBoard = this.props.board
+	guessCell(x, y) {
+		const tempBoard = [...this.props.board]
+
 		tempBoard[y][x].isFiredAt = true
 
-		if(this.isHit(x, y)) {
-			console.log( ship )
+		// If ship is hit
+		if( this.props.board[y][x].ship ) {
+			tempBoard[y][x].ship.hitPoints++
 		} else {
-			console.log( 'MISS' )
+			console.log( 'miss: ', tempBoard[y][x] )
 		}
-
+		
+		// Update the board state
 		this.props.dispatch( buildBoard(tempBoard) )
-	}
-
-	isHit(x, y) {
-		return (this.props.board[y][x].name)
-			? true
-			: false
 	}
 
 	renderClassName() {
@@ -39,11 +36,9 @@ class Cell extends Component {
 			className += ' ' + styles.bombed
 		}
 		
-		if(this.props.ship !== '') {
-			className += ' ' + styles.ship
-		} else {
-			className += ' ' + styles.noShip
-		}
+		className += (this.props.ship)
+			? ' ' + styles.ship
+			: ' ' + styles.noShip
 
 		return className
 	}
@@ -51,7 +46,7 @@ class Cell extends Component {
 	render() {
 		return (
 			<div
-				onClick={() => this.guessCell(this.props.x, this.props.y, this.props.ship)}
+				onClick={() => this.guessCell(this.props.x, this.props.y)}
 				className={this.renderClassName()}>
 			</div>
 		)

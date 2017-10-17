@@ -10,36 +10,36 @@ export default handleActions({
 }, {
 	ships: [
         {
-			name: 's1',
+			name: 's2_1',
 			length: 2,
 			posX: 0,
 			posY: 0,
 			direction: 'h',
-			hits: [false, false]
+			hitPoints: 0
 		},
 		{
-			name: 's2',
+			name: 's2_2',
 			length: 2,
 			posX: 4,
 			posY: 4,
 			direction: 'v',
-			hits: [false, false]
+			hitPoints: 0
 		},
 		{
-			name: 's3',
+			name: 's2_3',
 			length: 2,
 			posX: 6,
 			posY: 6,
 			direction: 'h',
-			hits: [false, false]
+			hitPoints: 0
 		},
 		{
-			name: 's4',
+			name: 's2_4',
 			length: 2,
 			posX: 4,
 			posY: 8,
 			direction: 'v',
-			hits: [false, false]
+			hitPoints: 0
 		}
     ]
 })

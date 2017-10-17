@@ -11,7 +11,6 @@ import styles from './board.css'
 class Board extends Component {
 	constructor(props) {
 		super(props)
-		console.log( buildBoard )
 	}
 
 	componentWillMount() {
@@ -19,13 +18,12 @@ class Board extends Component {
 	}
 
 	renderBoard() {
-		return this.props.board.map( (posY, y) => {
-			return posY.map( (posX, x) => {
-				let isFiredAt = (posX.isFiredAt) ? true : false
-
-				return (posX.name)
-					? <Cell isFiredAt={isFiredAt} key={x+y} x={x} y={y} ship={posX} />
-					: <Cell isFiredAt={isFiredAt} key={x+y} x={x} y={y} ship="" />
+		return this.props.board.map( (row, y) => {
+			return row.map( (cell, x, board) => {
+				// key = 1 through 100?!?!?!
+				return (cell.ship)
+					? <Cell isFiredAt={cell.isFiredAt} key={(y+1) * (x+1)} x={x} y={y} ship={cell} />
+					: <Cell isFiredAt={cell.isFiredAt} key={(y+1) * (x+1)} x={x} y={y} ship={null} />
 			} )
 		} )
 	}
@@ -37,9 +35,9 @@ class Board extends Component {
 		this.props.ships.forEach( (ship) => {
 			for(let i = 0; i < ship.length; i++) {
 				if(ship.direction === 'h') {
-					tempBoard[ship.posY][ship.posX + i] = ship
+					tempBoard[ship.posY][ship.posX + i].ship = ship
 				} else {
-					tempBoard[ship.posY + i][ship.posX] = ship
+					tempBoard[ship.posY + i][ship.posX].ship = ship
 				}
 			}
 		} )
@@ -47,7 +45,7 @@ class Board extends Component {
 		this.props.dispatch( buildBoard(tempBoard) )
 	}
 
-	render() {		
+	render() {
 		return (
 			<div className={styles.wrapper}>
 				{ this.renderBoard() }

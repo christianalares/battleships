@@ -1,4 +1,3 @@
-console.log( 'asd' )
 
 export const buildBoard = (board) => (dispatch) => {
 	dispatch({

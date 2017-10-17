@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './app.css'
+import styles from './app.css'
 
 import Board from '../Board'
 
@@ -19,7 +19,7 @@ import Board from '../Board'
 class App extends Component {
 	render() {
 		return (
-			<div className="app-wrapper">
+			<div className={styles.wrapper}>
 				<Board />
 			</div>
 		)
