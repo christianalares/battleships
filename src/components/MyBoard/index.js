@@ -27,7 +27,7 @@ class MyBoard extends Component {
 			setTimeout(() => {
 				// console.log( ship )
 				this.placeShip(ship)
-			}, 1000 * i)
+			}, 100 * i)
 
 		} )
 	}
@@ -65,8 +65,10 @@ class MyBoard extends Component {
 			// If ship collides with !null (a ship)
 			for (let i = 0; i < ship.length; i++) {
 				if( !this.props.board[posY][posX + i].ship ) {
-					console.log( ship.name, this.props.board[posY][posX + i].ship )
 					validPlacement = true
+				} else {
+					validPlacement = false
+					break
 				}
 			}
 		} else if(direction === 'v' && posY + ship.length <= boardSize) {
@@ -74,6 +76,9 @@ class MyBoard extends Component {
 				if( !this.props.board[posY + i][posX].ship ) {
 					console.log( ship.name, this.props.board[posY + i][posX].ship )
 					validPlacement = true
+				} else {
+					validPlacement = false
+					break
 				}
 			}
 		}
