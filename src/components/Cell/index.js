@@ -21,27 +21,32 @@ class Cell extends Component {
 		// Copy the state
 		const tempBoard = [...this.props.board]
 
-		// That position in the board array has been fired ad
-		tempBoard[y][x].isFiredAt = true
+		// If the cell has not been fired at before
+		if(!tempBoard[y][x].isFiredAt) {
+			// That position in the board array has been fired at
+			tempBoard[y][x].isFiredAt = true
 
-		// If ship is hit
-		if( this.props.board[y][x].ship ) {
+			// If ship is hit
+			if( this.props.board[y][x].ship ) {
+				
+				// Add hit to the ship
+				tempBoard[y][x].ship.hitPoints++
 			
-			// Add hit to the ship
-			tempBoard[y][x].ship.hitPoints++
-
-			// If hitpoints reached the whole ship, set sink to true
-			if(tempBoard[y][x].ship.hitPoints === tempBoard[y][x].ship.length) {
-				tempBoard[y][x].ship.isSink = true
+				// If hitpoints reached the whole ship, set sink to true
+				if(tempBoard[y][x].ship.hitPoints === tempBoard[y][x].ship.length) {
+					tempBoard[y][x].ship.isSink = true
+				}
+			
+			// If ship is not hit
+			} else {
+				console.log( 'miss: ', tempBoard[y][x] )
 			}
-		
-		// If ship is not hit
+			
+			// Update the board state
+			this.props.dispatch( buildBoard(tempBoard) )
 		} else {
-			console.log( 'miss: ', tempBoard[y][x] )
+			console.log( 'You can\'t fire at this place again' )
 		}
-		
-		// Update the board state
-		this.props.dispatch( buildBoard(tempBoard) )
 	}
 
 	renderClassName() {

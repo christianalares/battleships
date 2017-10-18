@@ -3,13 +3,26 @@
     flex: 10%;
 }
 
-:local .noShip.bombed {
-    background: rgb(76, 76, 255);
+:local .noShip,
+:local .ship { position: relative; }
+
+:local .noShip.bombed::before,
+:local .ship.bombed::before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
 }
 
-:local .ship.bombed {
-    background: rgb(233, 126, 25);
+:local .noShip.bombed::before {
+    content: '💦';
 }
+
+:local .ship.bombed::before {
+    content: '💥';
+}
+
 :local .ship.bombed.sink {
     background-color: red;
 }
@@ -18,19 +31,27 @@
     background: #888888;
 }
 :local .noShip {
-    background-color: blue;
+    background-color: rgb(11, 104, 161);
 }
 
-:local .s2_1 { background: salmon !important; }
-:local .s2_2 { background: rgb(255, 98, 84) !important; }
-:local .s2_3 { background: rgb(228, 64, 45) !important; }
-:local .s2_4 { background: rgb(170, 33, 21) !important; }
+:local .s2_1,
+:local .s2_2,
+:local .s2_3,
+:local .s2_4 {
+    background: rgb(62, 38, 170);
+}
 
-:local .s3_1 { background: #b4da55 !important; }
-:local .s3_2 { background: #91b82f !important; }
-:local .s3_3 { background: #718d29 !important; }
+:local .s3_1,
+:local .s3_2,
+:local .s3_3 {
+    background: #718d29;
+}
 
-:local .s4_1 { background: rgb(103, 117, 238) !important; }
-:local .s4_2 { background: rgb(65, 80, 194) !important; }
+:local .s4_1,
+:local .s4_2 {
+    background: rgb(143, 87, 62);
+}
 
-:local .s6_1 { background: rgb(221, 209, 155) !important; }
+:local .s6_1 {
+    background: rgb(221, 209, 155);
+}

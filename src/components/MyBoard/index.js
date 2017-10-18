@@ -25,8 +25,7 @@ class MyBoard extends Component {
 		allShips.forEach( (ship, i) => {
 
 			setTimeout(() => {
-				// console.log( ship )
-				this.placeShip(ship)
+				this.validateShip(ship)
 			}, 100 * i)
 
 		} )
@@ -49,7 +48,7 @@ class MyBoard extends Component {
 		} )
 	}
 
-	placeShip(ship) {
+	validateShip(ship) {
 		const boardSize = this.props.board.length
 		let validPlacement = false
 		
@@ -74,7 +73,6 @@ class MyBoard extends Component {
 		} else if(direction === 'v' && posY + ship.length <= boardSize) {
 			for (let i = 0; i < ship.length; i++) {
 				if( !this.props.board[posY + i][posX].ship ) {
-					console.log( ship.name, this.props.board[posY + i][posX].ship )
 					validPlacement = true
 				} else {
 					validPlacement = false
@@ -90,7 +88,7 @@ class MyBoard extends Component {
 
 			this.putShipOnBoard(ship)
 		} else {
-			this.placeShip(ship)
+			this.validateShip(ship)
 		}
 	}
 
