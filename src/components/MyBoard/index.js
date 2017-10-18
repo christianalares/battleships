@@ -60,25 +60,23 @@ class MyBoard extends Component {
 		const direction = (Math.random() < 0.5) ? 'v' : 'h'
 
 		// If ship exceeds the width/height of the board
-		if(direction === 'h' && posX + ship.length <= boardSize) {
-			// If ship collides with !null (a ship)
+		if( (direction === 'h' && posX + ship.length <= boardSize) || (direction === 'v' && posY + ship.length <= boardSize) ) {
+			
+			// Loop through the ships length and if it collides with another ship
+			// Counter adds on the grid vertically or horizontally
 			for (let i = 0; i < ship.length; i++) {
-				if( !this.props.board[posY][posX + i].ship ) {
+				let xCounter = (direction === 'h') ? i : 0
+				let yCounter = (direction === 'v') ? i : 0
+
+
+				if( !this.props.board[posY + yCounter][posX + xCounter].ship ) {
 					validPlacement = true
 				} else {
 					validPlacement = false
 					break
 				}
 			}
-		} else if(direction === 'v' && posY + ship.length <= boardSize) {
-			for (let i = 0; i < ship.length; i++) {
-				if( !this.props.board[posY + i][posX].ship ) {
-					validPlacement = true
-				} else {
-					validPlacement = false
-					break
-				}
-			}
+			
 		}
 
 		if(validPlacement) {
