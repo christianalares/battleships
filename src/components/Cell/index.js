@@ -33,7 +33,6 @@ class Cell extends Component {
 			// If hitpoints reached the whole ship, set sink to true
 			if(tempBoard[y][x].ship.hitPoints === tempBoard[y][x].ship.length) {
 				tempBoard[y][x].ship.isSink = true
-			
 			}
 		
 		// If ship is not hit
@@ -60,7 +59,7 @@ class Cell extends Component {
 			}
 		}
 		
-		// Is it a shop or the sea?
+		// Is it a ship or the sea?
 		className += (this.props.ship)
 			? ' ' + styles.ship
 			: ' ' + styles.noShip

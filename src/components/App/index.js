@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styles from './app.css'
 
 import MyBoard from '../MyBoard'
+import Dock from '../Dock'
 // import EnemyBoard from '../EnemyBoard'
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
 		return (
 			<div className={styles.wrapper}>
 				<MyBoard />
-				{/* <EnemyBoard /> */}
+				<Dock />
 			</div>
 		)
 	}
