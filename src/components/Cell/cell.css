@@ -20,3 +20,7 @@
 :local .noShip {
     background-color: blue;
 }
+
+:local .s6_2 {
+    background: salmon !important;
+}

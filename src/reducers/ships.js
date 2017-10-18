@@ -11,6 +11,15 @@ export default handleActions({
 	ships: [
 		{
 			name: 's6_1',
+			length: 5,
+			posX: 0,
+			posY: 0,
+			direction: 'h',
+			hitPoints: 0,
+			isSink: false
+		},
+		{
+			name: 's6_2',
 			length: 6,
 			posX: 0,
 			posY: 0,

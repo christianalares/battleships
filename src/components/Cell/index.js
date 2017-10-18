@@ -61,7 +61,7 @@ class Cell extends Component {
 		
 		// Is it a ship or the sea?
 		className += (this.props.ship)
-			? ' ' + styles.ship
+			? ' ' + styles.ship + ' ' + styles[this.props.ship.name]
 			: ' ' + styles.noShip
 
 		return className

@@ -19,11 +19,16 @@ class MyBoard extends Component {
 	}
 
 	componentWillMount() {
-		this.putShipsOnBoard()
+		// this.putShipsOnBoard()
 
 		const allShips = [...this.props.ships]
-		allShips.forEach( (ship) => {
-			this.placeShip(ship)
+		allShips.forEach( (ship, i) => {
+
+			setTimeout(() => {
+				// console.log( ship )
+				this.placeShip(ship)
+			}, 1000 * i)
+
 		} )
 	}
 
@@ -45,8 +50,6 @@ class MyBoard extends Component {
 	}
 
 	placeShip(ship) {
-		console.log( ship.name )
-
 		const boardSize = this.props.board.length
 		let validPlacement = false
 		
@@ -57,48 +60,51 @@ class MyBoard extends Component {
 		// 50% chance of v or h
 		const direction = (Math.random() < 0.5) ? 'v' : 'h'
 
-		if(direction === 'h') {
-			// If ship exceeds the width of the board
-			if(posX + ship.length <= boardSize) {
-				validPlacement = true
+		// If ship exceeds the width/height of the board
+		if(direction === 'h' && posX + ship.length <= boardSize) {
+			// If ship collides with !null (a ship)
+			for (let i = 0; i < ship.length; i++) {
+				if( !this.props.board[posY][posX + i].ship ) {
+					console.log( ship.name, this.props.board[posY][posX + i].ship )
+					validPlacement = true
+				}
 			}
-		} else {
-			// If ship exceeds the width of the board
-			if(posY + ship.length <= boardSize) {
-				validPlacement = true
+		} else if(direction === 'v' && posY + ship.length <= boardSize) {
+			for (let i = 0; i < ship.length; i++) {
+				if( !this.props.board[posY + i][posX].ship ) {
+					console.log( ship.name, this.props.board[posY + i][posX].ship )
+					validPlacement = true
+				}
 			}
 		}
-
-		// Loop through ships length and check it doesn't collide with other ship
-		// if validPlacement so far is true
-		// if(validPlacement) {
-		// 	for (let i = 0; i < ship.length; i++) {
-		// 		if(direction === 'h') {
-		// 			if(this.props.board[posY + i][posX].ship) {
-		// 				validPlacement = false
-		// 			} else {
-		// 				validPlacement = true
-		// 			}
-		// 		} else {
-		// 			if(this.props.board[posY][posX + i].ship) {
-		// 				validPlacement = false
-		// 			} else {
-		// 				validPlacement = true
-		// 			}
-		// 		}
-		// 	}
-		// }
 
 		if(validPlacement) {
 			ship.posX = posX
 			ship.posY = posY
 			ship.direction = direction
 
-			// console.log( ship )
+			this.putShipOnBoard(ship)
 		} else {
 			this.placeShip(ship)
-			// console.log( 'nej!', posX, posY, direction)
 		}
+	}
+
+	putShipOnBoard(ship) {
+		// Clone the state
+		const tempBoard = [...this.props.board]
+
+		// Take the ships length and render it horizontally
+		// or vertically depending on the direction prop
+		for(let i = 0; i < ship.length; i++) {
+			if(ship.direction === 'h') {
+				tempBoard[ship.posY][ship.posX + i].ship = ship
+			} else {
+				tempBoard[ship.posY + i][ship.posX].ship = ship
+			}
+		}
+
+		// Set the new build board to state
+		this.props.dispatch( buildBoard(tempBoard) )
 	}
 
 	putShipsOnBoard() {
