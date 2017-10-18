@@ -19,8 +19,6 @@ class MyBoard extends Component {
 	}
 
 	componentWillMount() {
-		// this.putShipsOnBoard()
-
 		const allShips = [...this.props.ships]
 		allShips.forEach( (ship, i) => {
 
@@ -59,7 +57,7 @@ class MyBoard extends Component {
 		// 50% chance of v or h
 		const direction = (Math.random() < 0.5) ? 'v' : 'h'
 
-		// If ship exceeds the width/height of the board
+		// If ship doesn't exceed the width/height of the board
 		if( (direction === 'h' && posX + ship.length <= boardSize) || (direction === 'v' && posY + ship.length <= boardSize) ) {
 			
 			// Loop through the ships length and if it collides with another ship
@@ -76,9 +74,11 @@ class MyBoard extends Component {
 					break
 				}
 			}
-			
+
 		}
 
+		// If the placement is valid add the props
+		// and put it on the boardelse do it again
 		if(validPlacement) {
 			ship.posX = posX
 			ship.posY = posY

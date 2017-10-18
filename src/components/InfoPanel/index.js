@@ -5,13 +5,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 // Actions
-import { buildBoard } from '../../actions/board'
+// import { buildBoard } from '../../actions/board'
 
 // Components
 // import Ship from '../Ship'
 
 // Style
-import styles from './myboard.css'
+import styles from './infopanel.css'
 
 class InfoPanel extends Component {
 	constructor(props) {
@@ -26,7 +26,7 @@ class InfoPanel extends Component {
 	render() {
 		return (
 			<div className={styles.wrapper}>
-				
+				<h2>Info</h2>
 			</div>
 		)
 	}
