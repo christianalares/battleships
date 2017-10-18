@@ -1,5 +1,5 @@
 :local .wrapper {
-    /* border: 1px solid red; */
+    border: 5px solid black;
     width: 500px;
     height: 500px;
     display: flex;
