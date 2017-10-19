@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 
 // Actions
 import { buildBoard } from '../../actions/board'
+import { setGameState } from '../../actions/app'
 
 // Components
 import Cell from '../Cell'
@@ -27,6 +28,7 @@ class MyBoard extends Component {
 			}, 100 * i)
 
 		} )
+
 	}
 
 	renderBoard() {
@@ -140,7 +142,8 @@ class MyBoard extends Component {
 function mapStateToProps(state) {
 	return {
 		board: state.board.board,
-		ships: state.ships.ships
+		ships: state.ships.ships,
+		gameState: state.app.gameState
 	}
 }
 

@@ -9,7 +9,8 @@
         // "node_modules": true,
         ".vscode": true,
         ".yarnclean": true,
-        "yarn.lock": true
+        "yarn.lock": true,
+        "*.sketch": true
 
     }
 }

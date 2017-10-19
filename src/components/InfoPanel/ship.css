@@ -1,0 +1,12 @@
+:local .wrapper {
+    margin: 5px 10px 5px 0;
+    cursor: move;
+}
+
+:local .wrapper span {
+    display: inline-block;
+    width: 49px;
+    height: 49px;
+    background-color: rgba(0, 0, 0, .1);
+    box-shadow: inset 0 0 1px 0px rgba(0, 0, 0, .7);
+}

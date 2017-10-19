@@ -4,7 +4,7 @@ export default handleActions({
 	SET_SHIPS: (state, action) => {
 		return ({
 			...state,
-			board: action.payload
+			ships: action.payload
 		})
 	}
 }, {

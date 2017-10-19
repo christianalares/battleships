@@ -72,10 +72,26 @@ class Cell extends Component {
 		return className
 	}
 
+	handleCellClick(x, y) {
+		switch (this.props.gameState) {
+			case 'start':
+				console.log( 'FLYTTA DÅÅÅÅ!!!' )
+				break
+
+			case 'ongoing':
+				this.guessCell(x, y)
+			
+				break
+
+			default:
+				break
+		}
+	}
+
 	render() {
 		return (
 			<div
-				onClick={() => this.guessCell(this.props.x, this.props.y)}
+				onClick={() => this.handleCellClick(this.props.x, this.props.y)}
 				className={this.renderClassName()}>
 			</div>
 		)
@@ -85,7 +101,8 @@ class Cell extends Component {
 function mapStateToProps(state) {
 	return {
 		board: state.board.board,
-		ships: state.ships.ships
+		ships: state.ships.ships,
+		gameState: state.app.gameState
 	}
 }
 

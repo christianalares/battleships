@@ -1,4 +1,47 @@
 :local .wrapper {
-    padding: 0 20px;
-    background-color: rgba(0, 0, 0, .1);
+	padding: 0 2rem;
+	background-color: rgba(0, 0, 0, .1);
+	/* width: 100%; */
+	width: 40vw;
+    /* height: 40vw; */
+    /* max-height: 500px; */
+    max-width: 500px;
+}
+
+
+:local .wrapper h3 {
+	margin: 0;
+	padding: 1rem 0;
+}
+
+:local .wrapper p {
+	margin: 0;
+}
+
+:local .wrapper button {
+	cursor: pointer;
+	margin: 1rem 0;
+	padding: 1rem 2rem;
+	font-size: 1.6rem;
+	background: rgb(26, 122, 26);
+	color: white;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+	border: 1px solid rgb(19, 63, 2);
+	border-radius: 6px;
+}
+
+:local .shipsWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+:local .wrapper button:hover {
+	background: rgb(48, 161, 48);
+}
+
+@media screen and (max-width: 700px) {
+	:local .wrapper {
+		text-align: center;
+	}
 }
